@@ -29,7 +29,8 @@ func _pick_new_wander_direction() -> void:
 	var angle := rng.randf() * TAU
 	wander_direction = Vector2(cos(angle), sin(angle))
 	wander_timer.wait_time = randf_range(1.5, 4.0)
-	wander_timer.start()
+	if is_inside_tree():
+		wander_timer.start()
 
 func interact(player: Node) -> void:
 	if not species:
