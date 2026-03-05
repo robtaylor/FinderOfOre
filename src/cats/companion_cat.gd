@@ -3,14 +3,15 @@ extends Node2D
 ## The companion cat that follows the player and detects ores.
 ## Spawned/despawned when GameState.active_companion changes.
 
-@onready var sprite: ColorRect = $Sprite
+@onready var sprite: Sprite2D = $Sprite
 @onready var detection_area: Area2D = $DetectionArea
 @onready var detection_shape: CollisionShape2D = $DetectionArea/DetectionShape
 @onready var indicator_arrow: Node2D = $IndicatorArrow
+@onready var arrow_sprite: Sprite2D = $IndicatorArrow/ArrowSprite
 
 var cat_instance: CatInstance = null
 var target_player: CharacterBody2D = null
-var follow_offset := Vector2(-14, 4)
+var follow_offset := Vector2(-20, 8)
 var follow_speed := 100.0
 var detected_ores: Array = []
 var nearest_ore: Node = null
@@ -19,6 +20,10 @@ func _ready() -> void:
 	EventBus.companion_changed.connect(_on_companion_changed)
 	indicator_arrow.visible = false
 	visible = false
+	# Load arrow texture
+	var arrow_tex := load("res://assets/sprites/ui/ore_arrow.png")
+	if arrow_tex:
+		arrow_sprite.texture = arrow_tex
 
 func _process(_delta: float) -> void:
 	if not visible or not target_player:
@@ -43,12 +48,15 @@ func _on_companion_changed(new_cat: CatInstance) -> void:
 	cat_instance = new_cat
 	visible = true
 
-	# Set color from species
+	# Set sprite from species
 	if cat_instance.species:
-		sprite.color = cat_instance.species.color
+		var tex_path := "res://assets/sprites/cats/%s.png" % cat_instance.species.species_id
+		var tex := load(tex_path)
+		if tex:
+			sprite.texture = tex
 
 	# Set detection radius
-	var radius: float = cat_instance.get_detection_radius()
+	var radius: float = cat_instance.get_detection_radius() * 2.0  # Scale for 32px tiles
 	var shape := CircleShape2D.new()
 	shape.radius = radius
 	detection_shape.shape = shape

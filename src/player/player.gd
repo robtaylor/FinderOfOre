@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
-const SPEED := 80.0
+const SPEED := 140.0
 
 enum State { IDLE, WALKING, CATCHING, MINING, DIALOGUE }
 var current_state: State = State.IDLE
 
-@onready var sprite: ColorRect = $Sprite
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var camera: Camera2D = $Camera2D
 
@@ -32,9 +31,12 @@ func _physics_process(_delta: float) -> void:
 		_update_interaction_area_position()
 		velocity = input_dir * SPEED
 		_set_state(State.WALKING)
+		_update_animation()
 	else:
 		velocity = Vector2.ZERO
-		_set_state(State.IDLE)
+		if current_state == State.WALKING:
+			_set_state(State.IDLE)
+		_update_animation()
 
 	move_and_slide()
 
@@ -57,6 +59,17 @@ func _set_state(new_state: State) -> void:
 	current_state = new_state
 	EventBus.player_state_changed.emit(State.keys()[new_state])
 
+func _update_animation() -> void:
+	var anim_prefix := "idle_" if current_state != State.WALKING else "walk_"
+	if facing_direction == Vector2.DOWN:
+		sprite.play(anim_prefix + "down")
+	elif facing_direction == Vector2.UP:
+		sprite.play(anim_prefix + "up")
+	elif facing_direction == Vector2.LEFT:
+		sprite.play(anim_prefix + "left")
+	elif facing_direction == Vector2.RIGHT:
+		sprite.play(anim_prefix + "right")
+
 func _snap_to_cardinal(dir: Vector2) -> Vector2:
 	if abs(dir.x) > abs(dir.y):
 		return Vector2.RIGHT if dir.x > 0 else Vector2.LEFT
@@ -65,7 +78,7 @@ func _snap_to_cardinal(dir: Vector2) -> Vector2:
 
 func _update_interaction_area_position() -> void:
 	if interaction_area:
-		interaction_area.position = facing_direction * 12.0
+		interaction_area.position = facing_direction * 24.0
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
 	if body != self and body.has_method("interact"):

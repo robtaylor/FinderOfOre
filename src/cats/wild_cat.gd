@@ -5,18 +5,22 @@ extends Area2D
 
 @export var species: CatSpecies
 
-@onready var sprite: ColorRect = $Sprite
-@onready var exclamation: Label = $Exclamation
+@onready var sprite: Sprite2D = $Sprite
+@onready var exclamation: Sprite2D = $Exclamation
 @onready var wander_timer: Timer = $WanderTimer
 
 var player_nearby := false
 var wander_direction := Vector2.ZERO
-var wander_speed := 20.0
+var wander_speed := 30.0
 
 func _ready() -> void:
 	exclamation.visible = false
 	if species:
-		sprite.color = species.color
+		# Load species-specific sprite
+		var tex_path := "res://assets/sprites/cats/%s.png" % species.species_id
+		var tex := load(tex_path)
+		if tex:
+			sprite.texture = tex
 	_pick_new_wander_direction()
 
 func _physics_process(delta: float) -> void:
@@ -51,12 +55,14 @@ func catch_succeeded() -> void:
 func catch_failed() -> void:
 	EventBus.cat_catch_failed.emit(self)
 	# Cat runs away briefly
-	wander_direction = (global_position - get_tree().get_first_node_in_group("player").global_position).normalized()
-	wander_speed = 60.0
+	var player_node := get_tree().get_first_node_in_group("player")
+	if player_node:
+		wander_direction = (global_position - player_node.global_position).normalized()
+	wander_speed = 80.0
 	player_nearby = false
 	exclamation.visible = false
 	await get_tree().create_timer(1.0).timeout
-	wander_speed = 20.0
+	wander_speed = 30.0
 	_pick_new_wander_direction()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:

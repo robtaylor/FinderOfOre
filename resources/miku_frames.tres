@@ -1,0 +1,170 @@
+[gd_resource type="SpriteFrames" load_steps=17 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/player/miku.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="down0"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="down1"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="down2"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="down3"]
+atlas = ExtResource("1")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="left0"]
+atlas = ExtResource("1")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="left1"]
+atlas = ExtResource("1")
+region = Rect2(32, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="left2"]
+atlas = ExtResource("1")
+region = Rect2(64, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="left3"]
+atlas = ExtResource("1")
+region = Rect2(96, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="right0"]
+atlas = ExtResource("1")
+region = Rect2(0, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="right1"]
+atlas = ExtResource("1")
+region = Rect2(32, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="right2"]
+atlas = ExtResource("1")
+region = Rect2(64, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="right3"]
+atlas = ExtResource("1")
+region = Rect2(96, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="up0"]
+atlas = ExtResource("1")
+region = Rect2(0, 144, 32, 48)
+
+[sub_resource type="AtlasTexture" id="up1"]
+atlas = ExtResource("1")
+region = Rect2(32, 144, 32, 48)
+
+[sub_resource type="AtlasTexture" id="up2"]
+atlas = ExtResource("1")
+region = Rect2(64, 144, 32, 48)
+
+[sub_resource type="AtlasTexture" id="up3"]
+atlas = ExtResource("1")
+region = Rect2(96, 144, 32, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("down0")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("left0")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("right0")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("up0")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("down0")
+}, {
+"duration": 1.0,
+"texture": SubResource("down1")
+}, {
+"duration": 1.0,
+"texture": SubResource("down2")
+}, {
+"duration": 1.0,
+"texture": SubResource("down3")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("left0")
+}, {
+"duration": 1.0,
+"texture": SubResource("left1")
+}, {
+"duration": 1.0,
+"texture": SubResource("left2")
+}, {
+"duration": 1.0,
+"texture": SubResource("left3")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("right0")
+}, {
+"duration": 1.0,
+"texture": SubResource("right1")
+}, {
+"duration": 1.0,
+"texture": SubResource("right2")
+}, {
+"duration": 1.0,
+"texture": SubResource("right3")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("up0")
+}, {
+"duration": 1.0,
+"texture": SubResource("up1")
+}, {
+"duration": 1.0,
+"texture": SubResource("up2")
+}, {
+"duration": 1.0,
+"texture": SubResource("up3")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 8.0
+}]

@@ -2,8 +2,7 @@ extends StaticBody2D
 
 ## The Queen NPC. Deliver ore to her to earn reputation.
 
-@onready var sprite: ColorRect = $Sprite
-@onready var crown: ColorRect = $Crown
+@onready var sprite: Sprite2D = $Sprite
 
 func interact(player: Node) -> void:
 	player.set_player_state(player.State.DIALOGUE)
