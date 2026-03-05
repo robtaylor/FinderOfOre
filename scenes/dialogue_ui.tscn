@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdialog0001"]
+
+[ext_resource type="Script" path="res://src/ui/dialogue_ui.gd" id="1"]
+
+[node name="DialogueUI" type="CanvasLayer"]
+layer = 11
+script = ExtResource("1")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = -10.0
+
+[node name="TextLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 388.0
+offset_bottom = 48.0
+text = ""
+autowrap_mode = 2
+
+[node name="ContinueLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 52.0
+offset_right = 390.0
+offset_bottom = 66.0
+text = "[E] Continue"
+horizontal_alignment = 2

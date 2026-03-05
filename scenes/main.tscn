@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmainscene1"]
+[gd_scene load_steps=16 format=3 uid="uid://bmainscene1"]
 
 [ext_resource type="PackedScene" path="res://scenes/overworld.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2"]
@@ -7,10 +7,14 @@
 [ext_resource type="PackedScene" path="res://scenes/companion_cat.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/backpack_ui.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/ore_node.tscn" id="7"]
-[ext_resource type="Resource" path="res://resources/cats/copper_tabby.tres" id="8"]
-[ext_resource type="Resource" path="res://resources/cats/iron_persian.tres" id="9"]
-[ext_resource type="Resource" path="res://resources/ores/copper.tres" id="10"]
-[ext_resource type="Resource" path="res://resources/ores/iron.tres" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/queen.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/dialogue_ui.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="10"]
+[ext_resource type="Resource" path="res://resources/cats/copper_tabby.tres" id="11"]
+[ext_resource type="Resource" path="res://resources/cats/iron_persian.tres" id="12"]
+[ext_resource type="Resource" path="res://resources/cats/gold_siamese.tres" id="13"]
+[ext_resource type="Resource" path="res://resources/ores/copper.tres" id="14"]
+[ext_resource type="Resource" path="res://resources/ores/iron.tres" id="15"]
 
 [node name="Main" type="Node2D"]
 
@@ -21,54 +25,65 @@ position = Vector2(480, 320)
 
 [node name="CompanionCat" parent="." instance=ExtResource("5")]
 
+[node name="Queen" parent="." instance=ExtResource("8")]
+position = Vector2(496, 160)
+
 [node name="WildCats" type="Node2D" parent="."]
 
 [node name="CopperTabby1" parent="WildCats" instance=ExtResource("4")]
 position = Vector2(200, 200)
-species = ExtResource("8")
+species = ExtResource("11")
 
 [node name="CopperTabby2" parent="WildCats" instance=ExtResource("4")]
 position = Vector2(600, 250)
-species = ExtResource("8")
+species = ExtResource("11")
 
 [node name="IronPersian1" parent="WildCats" instance=ExtResource("4")]
 position = Vector2(350, 400)
-species = ExtResource("9")
+species = ExtResource("12")
 
 [node name="CopperTabby3" parent="WildCats" instance=ExtResource("4")]
 position = Vector2(700, 500)
-species = ExtResource("8")
+species = ExtResource("11")
 
 [node name="IronPersian2" parent="WildCats" instance=ExtResource("4")]
 position = Vector2(150, 450)
-species = ExtResource("9")
+species = ExtResource("12")
+
+[node name="GoldSiamese1" parent="WildCats" instance=ExtResource("4")]
+position = Vector2(800, 350)
+species = ExtResource("13")
 
 [node name="OreNodes" type="Node2D" parent="."]
 
 [node name="Copper1" parent="OreNodes" instance=ExtResource("7")]
 position = Vector2(250, 150)
-ore_type = ExtResource("10")
+ore_type = ExtResource("14")
 
 [node name="Copper2" parent="OreNodes" instance=ExtResource("7")]
 position = Vector2(550, 350)
-ore_type = ExtResource("10")
+ore_type = ExtResource("14")
 
 [node name="Copper3" parent="OreNodes" instance=ExtResource("7")]
 position = Vector2(380, 180)
-ore_type = ExtResource("10")
+ore_type = ExtResource("14")
 
 [node name="Iron1" parent="OreNodes" instance=ExtResource("7")]
 position = Vector2(700, 200)
-ore_type = ExtResource("11")
+ore_type = ExtResource("15")
 
 [node name="Iron2" parent="OreNodes" instance=ExtResource("7")]
 position = Vector2(300, 480)
-ore_type = ExtResource("11")
+ore_type = ExtResource("15")
 
 [node name="Iron3" parent="OreNodes" instance=ExtResource("7")]
 position = Vector2(180, 300)
-ore_type = ExtResource("11")
+ore_type = ExtResource("15")
+
+[node name="HUDLayer" parent="." instance=ExtResource("10")]
 
 [node name="CatchUI" parent="." instance=ExtResource("3")]
 
 [node name="BackpackUI" parent="." instance=ExtResource("6")]
+
+[node name="DialogueUI" parent="." instance=ExtResource("9")]
