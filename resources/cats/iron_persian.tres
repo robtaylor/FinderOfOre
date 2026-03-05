@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CatSpecies" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/cat_species.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+species_id = "iron_persian"
+display_name = "Iron Persian"
+description = "An elegant Persian cat that detects iron deposits deep underground."
+color = Color(0.6, 0.6, 0.7, 1.0)
+detectable_ores = Array[String](["iron"])
+detection_radius = 100.0
+catch_difficulty = 0.5
+rarity = 2.0
+native_biomes = Array[String](["grasslands", "rocky_hills"])

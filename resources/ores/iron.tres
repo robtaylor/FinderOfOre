@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="OreType" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/ore_type.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+ore_id = "iron"
+display_name = "Iron"
+description = "Sturdy iron ore. More valuable than copper."
+color = Color(0.6, 0.6, 0.7, 1.0)
+base_value = 25
+mine_time = 2.5
+found_in_biomes = Array[String](["grasslands", "rocky_hills"])
+spawn_weight = 2.0

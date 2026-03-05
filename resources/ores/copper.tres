@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="OreType" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/ore_type.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+ore_id = "copper"
+display_name = "Copper"
+description = "Common copper ore. The Queen values it for crafting."
+color = Color(0.8, 0.5, 0.2, 1.0)
+base_value = 10
+mine_time = 1.5
+found_in_biomes = Array[String](["grasslands"])
+spawn_weight = 3.0

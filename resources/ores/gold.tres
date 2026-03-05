@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="OreType" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/ore_type.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+ore_id = "gold"
+display_name = "Gold"
+description = "Precious gold ore. The Queen treasures it above all else."
+color = Color(1.0, 0.85, 0.3, 1.0)
+base_value = 100
+mine_time = 4.0
+found_in_biomes = Array[String](["rocky_hills"])
+spawn_weight = 0.5
