@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmainscene1"]
+[gd_scene load_steps=7 format=3 uid="uid://bmainscene1"]
 
 [ext_resource type="PackedScene" path="res://scenes/overworld.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/catch_ui.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/wild_cat.tscn" id="4"]
+[ext_resource type="Resource" path="res://resources/cats/copper_tabby.tres" id="5"]
+[ext_resource type="Resource" path="res://resources/cats/iron_persian.tres" id="6"]
 
 [node name="Main" type="Node2D"]
 
@@ -9,3 +13,27 @@
 
 [node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(480, 320)
+
+[node name="WildCats" type="Node2D" parent="."]
+
+[node name="CopperTabby1" parent="WildCats" instance=ExtResource("4")]
+position = Vector2(200, 200)
+species = ExtResource("5")
+
+[node name="CopperTabby2" parent="WildCats" instance=ExtResource("4")]
+position = Vector2(600, 250)
+species = ExtResource("5")
+
+[node name="IronPersian1" parent="WildCats" instance=ExtResource("4")]
+position = Vector2(350, 400)
+species = ExtResource("6")
+
+[node name="CopperTabby3" parent="WildCats" instance=ExtResource("4")]
+position = Vector2(700, 500)
+species = ExtResource("5")
+
+[node name="IronPersian2" parent="WildCats" instance=ExtResource("4")]
+position = Vector2(150, 450)
+species = ExtResource("6")
+
+[node name="CatchUI" parent="." instance=ExtResource("3")]
