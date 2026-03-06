@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://btitle00001"]
+[gd_scene load_steps=3 format=3 uid="uid://btitle00001"]
 
 [ext_resource type="Script" path="res://src/ui/title_screen.gd" id="1"]
-[ext_resource type="SpriteFrames" path="res://resources/title_frames.tres" id="2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/title/frame0.png" id="2"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -21,30 +21,33 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12, 0.15, 0.1, 1.0)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -30.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -120.0
+offset_right = 160.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="Logo" type="AnimatedSprite2D" parent="CenterContainer"]
-sprite_frames = ExtResource("2")
-animation = &"idle"
-autoplay = "idle"
+[node name="CenterLogo" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2")
+expand_mode = 3
+stretch_mode = 4
+custom_minimum_size = Vector2(320, 288)
 
-[node name="PromptLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -50.0
-offset_right = 80.0
-offset_bottom = -30.0
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="PromptLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "Press any key to start"
 horizontal_alignment = 1
