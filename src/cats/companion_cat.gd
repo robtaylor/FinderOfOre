@@ -3,7 +3,7 @@ extends Node2D
 ## The companion cat that follows the player and detects ores.
 ## Spawned/despawned when GameState.active_companion changes.
 
-@onready var sprite: Sprite2D = $Sprite
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionArea
 @onready var detection_shape: CollisionShape2D = $DetectionArea/DetectionShape
 @onready var indicator_arrow: Node2D = $IndicatorArrow
@@ -15,6 +15,7 @@ var follow_offset := Vector2(-20, 8)
 var follow_speed := 100.0
 var detected_ores: Array = []
 var nearest_ore: Node = null
+var prev_x := 0.0
 
 func _ready() -> void:
 	EventBus.companion_changed.connect(_on_companion_changed)
@@ -29,9 +30,26 @@ func _process(_delta: float) -> void:
 	if not visible or not target_player:
 		return
 
+	prev_x = global_position.x
+
 	# Follow the player with a slight lag
 	var target_pos := target_player.global_position + follow_offset
 	global_position = global_position.lerp(target_pos, 0.08)
+
+	# Update animation based on movement direction
+	var dx := global_position.x - prev_x
+	if abs(dx) > 0.1:
+		if dx > 0:
+			anim_sprite.play("walk_right")
+		else:
+			anim_sprite.play("walk_left")
+	else:
+		# Idle - face same direction as player or last movement
+		var current_anim := anim_sprite.animation
+		if "right" in current_anim:
+			anim_sprite.play("idle_right")
+		else:
+			anim_sprite.play("idle_left")
 
 	# Update ore indicator
 	_update_indicator()
@@ -47,13 +65,6 @@ func _on_companion_changed(new_cat: CatInstance) -> void:
 
 	cat_instance = new_cat
 	visible = true
-
-	# Set sprite from species
-	if cat_instance.species:
-		var tex_path := "res://assets/sprites/cats/%s.png" % cat_instance.species.species_id
-		var tex := load(tex_path)
-		if tex:
-			sprite.texture = tex
 
 	# Set detection radius
 	var radius: float = cat_instance.get_detection_radius() * 2.0  # Scale for 32px tiles

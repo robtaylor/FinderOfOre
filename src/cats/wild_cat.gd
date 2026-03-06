@@ -5,22 +5,17 @@ extends Area2D
 
 @export var species: CatSpecies
 
-@onready var sprite: Sprite2D = $Sprite
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var exclamation: Sprite2D = $Exclamation
 @onready var wander_timer: Timer = $WanderTimer
 
 var player_nearby := false
 var wander_direction := Vector2.ZERO
 var wander_speed := 30.0
+var facing_right := true
 
 func _ready() -> void:
 	exclamation.visible = false
-	if species:
-		# Load species-specific sprite
-		var tex_path := "res://assets/sprites/cats/%s.png" % species.species_id
-		var tex := load(tex_path)
-		if tex:
-			sprite.texture = tex
 	_pick_new_wander_direction()
 
 func _physics_process(delta: float) -> void:
@@ -32,6 +27,18 @@ func _pick_new_wander_direction() -> void:
 	var rng := RandomNumberGenerator.new()
 	var angle := rng.randf() * TAU
 	wander_direction = Vector2(cos(angle), sin(angle))
+
+	# Update facing direction based on movement
+	if wander_direction.x > 0.1:
+		facing_right = true
+		anim_sprite.play("walk_right")
+	elif wander_direction.x < -0.1:
+		facing_right = false
+		anim_sprite.play("walk_left")
+	else:
+		# Mostly vertical movement, keep current facing
+		anim_sprite.play("walk_right" if facing_right else "walk_left")
+
 	wander_timer.wait_time = randf_range(1.5, 4.0)
 	if is_inside_tree():
 		wander_timer.start()
@@ -58,6 +65,12 @@ func catch_failed() -> void:
 	var player_node := get_tree().get_first_node_in_group("player")
 	if player_node:
 		wander_direction = (global_position - player_node.global_position).normalized()
+		if wander_direction.x >= 0:
+			facing_right = true
+			anim_sprite.play("walk_right")
+		else:
+			facing_right = false
+			anim_sprite.play("walk_left")
 	wander_speed = 80.0
 	player_nearby = false
 	exclamation.visible = false
@@ -70,6 +83,14 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		player_nearby = true
 		exclamation.visible = true
 		wander_direction = Vector2.ZERO
+		# Play idle animation facing the player
+		var player_dir := body.global_position.x - global_position.x
+		if player_dir >= 0:
+			facing_right = true
+			anim_sprite.play("idle_right")
+		else:
+			facing_right = false
+			anim_sprite.play("idle_left")
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
