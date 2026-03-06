@@ -16,6 +16,8 @@ var facing_right := true
 
 func _ready() -> void:
 	exclamation.visible = false
+	if species and species.sprite_frames:
+		anim_sprite.sprite_frames = species.sprite_frames
 	_pick_new_wander_direction()
 
 func _physics_process(delta: float) -> void:

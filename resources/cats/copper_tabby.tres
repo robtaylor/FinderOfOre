@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CatSpecies" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="CatSpecies" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://data/cat_species.gd" id="1"]
+[ext_resource type="SpriteFrames" path="res://resources/copper_tabby_frames.tres" id="2"]
 
 [resource]
 script = ExtResource("1")
@@ -8,6 +9,7 @@ species_id = "copper_tabby"
 display_name = "Copper Tabby"
 description = "A common tabby cat with a keen nose for copper ore."
 color = Color(0.8, 0.5, 0.2, 1.0)
+sprite_frames = ExtResource("2")
 detectable_ores = Array[String](["copper"])
 detection_radius = 80.0
 catch_difficulty = 0.3

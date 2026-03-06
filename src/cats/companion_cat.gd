@@ -66,6 +66,11 @@ func _on_companion_changed(new_cat: CatInstance) -> void:
 	cat_instance = new_cat
 	visible = true
 
+	# Set sprite from species
+	if cat_instance.species and cat_instance.species.sprite_frames:
+		anim_sprite.sprite_frames = cat_instance.species.sprite_frames
+		anim_sprite.play("idle_right")
+
 	# Set detection radius
 	var radius: float = cat_instance.get_detection_radius() * 2.0  # Scale for 32px tiles
 	var shape := CircleShape2D.new()

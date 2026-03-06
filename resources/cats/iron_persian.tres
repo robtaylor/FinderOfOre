@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CatSpecies" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="CatSpecies" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://data/cat_species.gd" id="1"]
+[ext_resource type="SpriteFrames" path="res://resources/iron_persian_frames.tres" id="2"]
 
 [resource]
 script = ExtResource("1")
@@ -8,6 +9,7 @@ species_id = "iron_persian"
 display_name = "Iron Persian"
 description = "An elegant Persian cat that detects iron deposits deep underground."
 color = Color(0.6, 0.6, 0.7, 1.0)
+sprite_frames = ExtResource("2")
 detectable_ores = Array[String](["iron"])
 detection_radius = 100.0
 catch_difficulty = 0.5

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="CatSpecies" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="CatSpecies" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://data/cat_species.gd" id="1"]
+[ext_resource type="SpriteFrames" path="res://resources/gold_siamese_frames.tres" id="2"]
 
 [resource]
 script = ExtResource("1")
@@ -8,6 +9,7 @@ species_id = "gold_siamese"
 display_name = "Gold Siamese"
 description = "A rare and skittish Siamese with an uncanny ability to find gold."
 color = Color(1.0, 0.85, 0.3, 1.0)
+sprite_frames = ExtResource("2")
 detectable_ores = Array[String](["gold"])
 detection_radius = 120.0
 catch_difficulty = 0.8

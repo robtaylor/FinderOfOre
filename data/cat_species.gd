@@ -5,6 +5,7 @@ extends Resource
 @export var display_name: String = ""
 @export var description: String = ""
 @export var color: Color = Color.WHITE
+@export var sprite_frames: SpriteFrames = null
 @export var detectable_ores: Array[String] = []
 @export var detection_radius: float = 80.0
 @export var catch_difficulty: float = 0.5  # 0.0 = easy, 1.0 = hard
