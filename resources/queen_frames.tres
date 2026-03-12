@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3]
+[gd_resource type="SpriteFrames" load_steps=13 format=3]
 
 [ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_frame0.png" id="1"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_frame1.png" id="2"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_frame3.png" id="4"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_frame4.png" id="5"]
 [ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_frame5.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_talking0.png" id="t0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_talking1.png" id="t1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_talking2.png" id="t2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_talking3.png" id="t3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_talking4.png" id="t4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npcs/queen_talking5.png" id="t5"]
 
 [resource]
 animations = [{
@@ -31,4 +37,27 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("t1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("t4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("t5")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 6.0
 }]

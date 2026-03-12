@@ -27,9 +27,11 @@ func interact(player: Node) -> void:
 		], player)
 
 func _show_dialogue(lines: Array[String], player: Node) -> void:
+	sprite.play("talking")
 	var dialogue_ui := get_tree().get_first_node_in_group("dialogue_ui")
 	if dialogue_ui:
 		dialogue_ui.show_dialogue(lines)
 		await dialogue_ui.dialogue_finished
+	sprite.play("idle")
 	player.set_player_state(player.State.IDLE)
 	EventBus.dialogue_ended.emit(self)
