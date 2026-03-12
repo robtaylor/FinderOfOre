@@ -1,89 +1,103 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmainscene1"]
+[gd_scene format=3 uid="uid://bmainscene1"]
 
-[ext_resource type="PackedScene" path="res://scenes/overworld.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/catch_ui.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/wild_cat.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/companion_cat.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/backpack_ui.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://scenes/ore_node.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/queen.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://scenes/dialogue_ui.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://boverworld01" path="res://scenes/overworld.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bplayer00001" path="res://scenes/player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bcatchui001" path="res://scenes/catch_ui.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bwildcat001" path="res://scenes/wild_cat.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bcompcat001" path="res://scenes/companion_cat.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://bbackpack01" path="res://scenes/backpack_ui.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://borenode001" path="res://scenes/ore_node.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bqueen00001" path="res://scenes/queen.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://bdialog0001" path="res://scenes/dialogue_ui.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://bhud0000001" path="res://scenes/hud.tscn" id="10"]
 [ext_resource type="Resource" path="res://resources/cats/copper_tabby.tres" id="11"]
 [ext_resource type="Resource" path="res://resources/cats/iron_persian.tres" id="12"]
 [ext_resource type="Resource" path="res://resources/cats/gold_siamese.tres" id="13"]
 [ext_resource type="Resource" path="res://resources/ores/copper.tres" id="14"]
 [ext_resource type="Resource" path="res://resources/ores/iron.tres" id="15"]
 
-[node name="Main" type="Node2D"]
+[sub_resource type="Animation" id="Animation_jkv2x"]
+resource_name = "cat-right"
 
-[node name="Overworld" parent="." instance=ExtResource("1")]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jbj1t"]
+_data = {
+&"cat-right": SubResource("Animation_jkv2x")
+}
 
-[node name="Player" parent="." instance=ExtResource("2")]
+[node name="Main" type="Node2D" unique_id=1219892796]
+y_sort_enabled = true
+
+[node name="Overworld" parent="." unique_id=1374687878 instance=ExtResource("1")]
+
+[node name="Player" parent="." unique_id=459913364 instance=ExtResource("2")]
 position = Vector2(480, 320)
 
-[node name="CompanionCat" parent="." instance=ExtResource("5")]
+[node name="CompanionCat" parent="." unique_id=1468324956 instance=ExtResource("5")]
 
-[node name="Queen" parent="." instance=ExtResource("8")]
+[node name="Queen" parent="." unique_id=578215194 instance=ExtResource("8")]
 position = Vector2(496, 96)
 
-[node name="WildCats" type="Node2D" parent="."]
+[node name="WildCats" type="Node2D" parent="." unique_id=2029543451]
+y_sort_enabled = true
 
-[node name="CopperTabby1" parent="WildCats" instance=ExtResource("4")]
+[node name="CopperTabby1" parent="WildCats" unique_id=377738231 instance=ExtResource("4")]
 position = Vector2(192, 256)
 species = ExtResource("11")
 
-[node name="CopperTabby2" parent="WildCats" instance=ExtResource("4")]
+[node name="CopperTabby2" parent="WildCats" unique_id=1073299193 instance=ExtResource("4")]
 position = Vector2(640, 384)
 species = ExtResource("11")
 
-[node name="IronPersian1" parent="WildCats" instance=ExtResource("4")]
+[node name="IronPersian1" parent="WildCats" unique_id=948756743 instance=ExtResource("4")]
 position = Vector2(352, 480)
 species = ExtResource("12")
 
-[node name="CopperTabby3" parent="WildCats" instance=ExtResource("4")]
+[node name="CopperTabby3" parent="WildCats" unique_id=1848907252 instance=ExtResource("4")]
 position = Vector2(768, 448)
 species = ExtResource("11")
 
-[node name="IronPersian2" parent="WildCats" instance=ExtResource("4")]
+[node name="IronPersian2" parent="WildCats" unique_id=1398497689 instance=ExtResource("4")]
 position = Vector2(128, 384)
 species = ExtResource("12")
 
-[node name="GoldSiamese1" parent="WildCats" instance=ExtResource("4")]
+[node name="GoldSiamese1" parent="WildCats" unique_id=998835562 instance=ExtResource("4")]
 position = Vector2(832, 288)
 species = ExtResource("13")
 
-[node name="OreNodes" type="Node2D" parent="."]
+[node name="OreNodes" type="Node2D" parent="." unique_id=1413944903]
+y_sort_enabled = true
 
-[node name="Copper1" parent="OreNodes" instance=ExtResource("7")]
+[node name="Copper1" parent="OreNodes" unique_id=1990362519 instance=ExtResource("7")]
 position = Vector2(256, 192)
 ore_type = ExtResource("14")
 
-[node name="Copper2" parent="OreNodes" instance=ExtResource("7")]
+[node name="Copper2" parent="OreNodes" unique_id=1961915776 instance=ExtResource("7")]
 position = Vector2(576, 416)
 ore_type = ExtResource("14")
 
-[node name="Copper3" parent="OreNodes" instance=ExtResource("7")]
+[node name="Copper3" parent="OreNodes" unique_id=131969442 instance=ExtResource("7")]
 position = Vector2(416, 224)
 ore_type = ExtResource("14")
 
-[node name="Iron1" parent="OreNodes" instance=ExtResource("7")]
+[node name="Iron1" parent="OreNodes" unique_id=1039545992 instance=ExtResource("7")]
 position = Vector2(736, 256)
 ore_type = ExtResource("15")
 
-[node name="Iron2" parent="OreNodes" instance=ExtResource("7")]
+[node name="Iron2" parent="OreNodes" unique_id=1321516786 instance=ExtResource("7")]
 position = Vector2(320, 544)
 ore_type = ExtResource("15")
 
-[node name="Iron3" parent="OreNodes" instance=ExtResource("7")]
+[node name="Iron3" parent="OreNodes" unique_id=418270841 instance=ExtResource("7")]
 position = Vector2(160, 320)
 ore_type = ExtResource("15")
 
-[node name="HUDLayer" parent="." instance=ExtResource("10")]
+[node name="HUDLayer" parent="." unique_id=125687726 instance=ExtResource("10")]
 
-[node name="CatchUI" parent="." instance=ExtResource("3")]
+[node name="CatchUI" parent="." unique_id=1391046586 instance=ExtResource("3")]
 
-[node name="BackpackUI" parent="." instance=ExtResource("6")]
+[node name="BackpackUI" parent="." unique_id=581663252 instance=ExtResource("6")]
 
-[node name="DialogueUI" parent="." instance=ExtResource("9")]
+[node name="DialogueUI" parent="." unique_id=2013435861 instance=ExtResource("9")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2044460647]
+libraries/ = SubResource("AnimationLibrary_jbj1t")

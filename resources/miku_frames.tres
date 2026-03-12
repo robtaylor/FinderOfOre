@@ -1,10 +1,32 @@
-[gd_resource type="SpriteFrames" load_steps=17 format=3]
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://cr4p5una4ug6c"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/player/miku.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cqojm0qhf4yd5" path="res://assets/sprites/player/miku.png" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_frame0.png" id="m0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_frame1.png" id="m1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_frame2.png" id="m2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_frame3.png" id="m3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_frame4.png" id="m4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_left_frame0.png" id="ml0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_left_frame1.png" id="ml1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_left_frame2.png" id="ml2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_left_frame3.png" id="ml3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/mining_left_frame4.png" id="ml4"]
 
 [sub_resource type="AtlasTexture" id="down0"]
 atlas = ExtResource("1")
 region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="left0"]
+atlas = ExtResource("1")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="right0"]
+atlas = ExtResource("1")
+region = Rect2(0, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="up0"]
+atlas = ExtResource("1")
+region = Rect2(0, 144, 32, 48)
 
 [sub_resource type="AtlasTexture" id="down1"]
 atlas = ExtResource("1")
@@ -18,10 +40,6 @@ region = Rect2(64, 0, 32, 48)
 atlas = ExtResource("1")
 region = Rect2(96, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="left0"]
-atlas = ExtResource("1")
-region = Rect2(0, 48, 32, 48)
-
 [sub_resource type="AtlasTexture" id="left1"]
 atlas = ExtResource("1")
 region = Rect2(32, 48, 32, 48)
@@ -34,10 +52,6 @@ region = Rect2(64, 48, 32, 48)
 atlas = ExtResource("1")
 region = Rect2(96, 48, 32, 48)
 
-[sub_resource type="AtlasTexture" id="right0"]
-atlas = ExtResource("1")
-region = Rect2(0, 96, 32, 48)
-
 [sub_resource type="AtlasTexture" id="right1"]
 atlas = ExtResource("1")
 region = Rect2(32, 96, 32, 48)
@@ -49,10 +63,6 @@ region = Rect2(64, 96, 32, 48)
 [sub_resource type="AtlasTexture" id="right3"]
 atlas = ExtResource("1")
 region = Rect2(96, 96, 32, 48)
-
-[sub_resource type="AtlasTexture" id="up0"]
-atlas = ExtResource("1")
-region = Rect2(0, 144, 32, 48)
 
 [sub_resource type="AtlasTexture" id="up1"]
 atlas = ExtResource("1")
@@ -167,4 +177,44 @@ animations = [{
 "loop": true,
 "name": &"walk_up",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("m2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("m3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("m4")
+}],
+"loop": true,
+"name": &"mining_right",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("ml0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("ml1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("ml2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("ml3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("ml4")
+}],
+"loop": true,
+"name": &"mining_left",
+"speed": 6.0
 }]

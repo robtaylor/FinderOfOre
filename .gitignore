@@ -1,3 +1,4 @@
 .godot/
 *.import
 .claude/
+.DS_Store

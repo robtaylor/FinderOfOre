@@ -60,6 +60,13 @@ func _set_state(new_state: State) -> void:
 	EventBus.player_state_changed.emit(State.keys()[new_state])
 
 func _update_animation() -> void:
+	if current_state == State.MINING:
+		# Face the ore: pick left or right based on where the ore is
+		if facing_direction == Vector2.LEFT or facing_direction == Vector2.UP:
+			sprite.play("mining_left")
+		else:
+			sprite.play("mining_right")
+		return
 	var anim_prefix := "idle_" if current_state != State.WALKING else "walk_"
 	if facing_direction == Vector2.DOWN:
 		sprite.play(anim_prefix + "down")
@@ -100,3 +107,4 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 
 func set_player_state(state: State) -> void:
 	_set_state(state)
+	_update_animation()
